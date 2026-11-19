@@ -35,12 +35,6 @@ python -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-## GitHub Pages deployment
-
-1. Upload the contents of this folder to your GitHub repository (keep the `src`, `js`, `css`, and `wasm` folders).
-2. Open **Settings → Pages** in the repository.
-3. Select **Deploy from a branch**, choose your default branch and `/ (root)`, then save.
-4. Wait for deployment and open the Pages URL.
 
 The prebuilt `wasm/converter.wasm` is included, so GitHub Pages does not need to compile C during deployment.
 
@@ -60,12 +54,12 @@ The source editor is editable, but browser execution uses the already-compiled `
 
 `build-wasm.sh` is a convenience alias for `compile-wasm.sh`. The included prebuilt artifact was produced with the tested Clang WebAssembly build.
 
-## Notes about the original assignment
+<!--## Notes about the original assignment
 
 The original program used `conio.h`, `getch()`, `system("cls")`, `gets()`, `strrev()`, recursive calls to `main()`, and platform-specific console behavior. Those pieces are not portable to a browser. The twelve menu choices and conversion behavior are retained, while terminal interaction is presented by the webpage and the conversion arithmetic is performed by the compiled C WebAssembly module.
 
 The C engine supports non-negative integer input in bases 2, 8, 10, and 16, up to the unsigned 32-bit limit. Hexadecimal input is case-insensitive. Prefixes such as `0x` are not required.
-
+-->
 ## Project structure
 
 ```text
@@ -84,6 +78,3 @@ numera-playground/
     └── converter.wasm
 ```
 
-## License
-
-Use and adapt this project for learning and portfolio purposes. Add a license of your choice before accepting outside contributions.
