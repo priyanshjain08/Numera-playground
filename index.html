@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8f2">
+  <meta name="description" content="Numera is a pastel-themed interactive C number system converter playground powered by WebAssembly.">
+  <title>Numera — C Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Numera home">
+      <span class="brand-mark"><span>n</span><i></i></span>
+      <span class="brand-name">numera<span class="brand-period">.</span><small>THE LITTLE NUMBER LAB</small></span>
+    </a>
+    <nav class="top-links"><a href="#playground">Playground</a><a href="#about">About</a><span class="language-pill"><span class="live-dot"></span> C · WebAssembly</span></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="sparkle">✳</span> YOUR C PROGRAM, IN THE BROWSER</div>
+        <h1>A tiny lab for<br><em>big conversions.</em></h1>
+        <p class="hero-description">A familiar menu-driven C program, now with its own little terminal. Pick a conversion, type your input, and watch the bits do their thing.</p>
+        <div class="hero-meta"><span><i class="meta-icon purple">⌘</i> 12 conversion paths</span><span><i class="meta-icon mint">◉</i> Runs locally in your browser</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="float-card card-binary"><small>BINARY</small><strong>101<span>101</span>01</strong></div>
+        <div class="float-card card-hex"><small>HEXADECIMAL</small><strong><b>0x</b>2A</strong></div>
+        <div class="number-sticker">01<br><span>10</span><br>11</div>
+        <div class="flower-sticker">✿</div>
+      </div>
+    </section>
+
+    <section class="playground-section" id="playground">
+      <div class="section-heading"><div><div class="eyebrow">THE WORKBENCH</div><h2>Make yourself at <em>home.</em></h2></div><div class="section-note"><span class="tiny-spark">✦</span> No installs. No fuss. Just C.</div></div>
+
+      <div class="workspace">
+        <div class="workspace-topline"><div class="workspace-title"><span class="file-icon">C</span><div><strong>nsc.c</strong><small>NUMERA · SOURCE FILE</small></div></div><div class="workspace-actions"><span class="saved-indicator"><i></i> Local editor</span><button class="soft-button" id="restoreBtn" type="button" title="Restore the original source">↺ <span>Restore</span></button><button class="run-button" id="runBtn" type="button"><span class="play-triangle">▶</span> Run program</button></div></div>
+        <div class="editor-wrap">
+          <div class="editor-gutter" id="lineNumbers" aria-hidden="true">1</div>
+          <textarea id="codeEditor" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Editable C source code" wrap="off" placeholder="Loading C source..."></textarea>
+        </div>
+        <div class="editor-footer"><span><kbd>Ctrl</kbd> + <kbd>Enter</kbd> to run</span><span id="editorCount">C SOURCE · EDITABLE</span></div>
+
+        <div class="terminal-heading"><div class="terminal-label"><span class="terminal-glyph">›_</span><div><strong>Terminal</strong><small>INTERACTIVE PROGRAM OUTPUT</small></div></div><div class="terminal-tools"><span class="terminal-status" id="status"><i></i> Ready</span><button class="terminal-icon-btn" id="clearBtn" type="button" title="Clear terminal">⌫</button><button class="terminal-icon-btn" id="stopBtn" type="button" title="Stop program">■</button></div></div>
+        <div class="terminal" id="terminal" role="log" aria-live="polite" aria-label="Program terminal">
+          <div class="terminal-welcome"><span class="welcome-mark">✳</span><div><strong>Your terminal is taking a tiny nap.</strong><p>Press <b>Run program</b> to wake it up.</p></div></div>
+        </div>
+        <form class="terminal-input-row" id="terminalForm" autocomplete="off"><label for="terminalInput"><span class="prompt-symbol">❯</span></label><input id="terminalInput" type="text" placeholder="Run the program to start typing…" disabled aria-label="Terminal input"><button type="submit" id="sendBtn" disabled>Enter <span>↵</span></button></form>
+        <div class="workspace-bottom"><span><i class="wasm-dot"></i> C logic compiled to WebAssembly</span><span>Input is processed in your browser</span></div>
+      </div>
+      <div class="edit-note"><span class="note-icon">✎</span><p><strong>Feel free to experiment with the source.</strong> The editor is editable. The Run button executes the bundled WebAssembly build; to run changes you make in the editor, rebuild <code>wasm/converter.wasm</code> using the included build script. See the README for the quick steps.</p></div>
+    </section>
+
+    <section class="conversion-section" id="about"><div class="section-heading compact"><div><div class="eyebrow">THE ORIGINAL LINEUP</div><h2>All 12 ways to <em>convert.</em></h2></div><p class="section-note">The same conversion menu from the original C assignment, with a fresh little home.</p></div>
+      <div class="conversion-grid">
+        <div class="conversion-card lilac"><span>01</span><strong>Decimal <b>→</b> Binary</strong><small>Base 10 to Base 2</small></div>
+        <div class="conversion-card peach"><span>02</span><strong>Decimal <b>→</b> Octal</strong><small>Base 10 to Base 8</small></div>
+        <div class="conversion-card mint"><span>03</span><strong>Decimal <b>→</b> Hexadecimal</strong><small>Base 10 to Base 16</small></div>
+        <div class="conversion-card blue"><span>04</span><strong>Binary <b>→</b> Decimal</strong><small>Base 2 to Base 10</small></div>
+        <div class="conversion-card peach"><span>05</span><strong>Binary <b>→</b> Octal</strong><small>Base 2 to Base 8</small></div>
+        <div class="conversion-card lilac"><span>06</span><strong>Binary <b>→</b> Hexadecimal</strong><small>Base 2 to Base 16</small></div>
+        <div class="conversion-card blue"><span>07</span><strong>Octal <b>→</b> Decimal</strong><small>Base 8 to Base 10</small></div>
+        <div class="conversion-card mint"><span>08</span><strong>Octal <b>→</b> Binary</strong><small>Base 8 to Base 2</small></div>
+        <div class="conversion-card peach"><span>09</span><strong>Octal <b>→</b> Hexadecimal</strong><small>Base 8 to Base 16</small></div>
+        <div class="conversion-card mint"><span>10</span><strong>Hexadecimal <b>→</b> Decimal</strong><small>Base 16 to Base 10</small></div>
+        <div class="conversion-card blue"><span>11</span><strong>Hexadecimal <b>→</b> Binary</strong><small>Base 16 to Base 2</small></div>
+        <div class="conversion-card lilac"><span>12</span><strong>Hexadecimal <b>→</b> Octal</strong><small>Base 16 to Base 8</small></div>
+      </div>
+    </section>
+  </main>
+  <footer><a class="footer-brand" href="#top">numera<span>.</span></a><p>Made of numbers, a little C, and a lot of curiosity.</p><span class="footer-flower">✿</span></footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
